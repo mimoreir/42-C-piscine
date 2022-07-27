@@ -14,8 +14,7 @@
 #include <string.h>
 #include <bsd/string.h>
 
-
-int	ft_strlen(char *str)
+unsigned int	ft_strlen(char *str)
 {
 	int	x;
 
@@ -33,8 +32,15 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	char			*a;
 
 	i = 0;
-	a = dest + ft_strlen(dest);
-	while (i < (size - 1) && *src)
+	a = dest;
+	if (size <= ft_strlen(dest))
+		return (size + ft_strlen(src));
+	while (*a)
+	{
+		a++;
+		i++;
+	}
+	while (i < (size -1) && *src)
 	{
 		*a = *src;
 		a++;
@@ -42,17 +48,16 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 		i++;
 	}
 	*a = '\0';
-	return (i);
+	return (ft_strlen(dest) + ft_strlen(src));
 }
 
-
-int main(void)
+/*int main(void)
 {
-	char a[100] = "tudo bem?";
-	char b[100] = "ola";
-	char c[100] = "tudo bem?";
-	char d[100] = "ola";
+	char b[15] = "ola ";
+	char a[15] = "tudo bem?";
+	char c[15] = "tudo bem?";
+	char d[15] = "ola ";
 
-	printf("%d---%s\n", ft_strlcat(a,b,5),a);
-	printf("%ld---%s\n", strlcat(c,d,5),c);
-}
+	printf("%d---%s\n", ft_strlcat(c,d,10),c);
+	printf("%ld---%s\n", strlcat(a,b,10),a);
+}*/

@@ -37,6 +37,8 @@ int	ft_atoi(char *str)
 		}
 		str++;
 	}
+	if (*str < '0' || *str > '9')
+		return (0);
 	while (*str >= '0' && *str <= '9')
 	{
 		n = (n * 10) + (*str - '0');
@@ -48,11 +50,11 @@ int	ft_atoi(char *str)
 		return (n * -1);
 }
 
-int	main(int argc, char *argv[])
+/*int	main(int argc, char *argv[])
 {
 	if (argc == 2)
 	{
 		printf("%d\n", ft_atoi(argv[1]));
 	}
 	return (0);
-}
+}*/

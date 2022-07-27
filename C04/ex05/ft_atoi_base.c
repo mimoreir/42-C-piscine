@@ -1,16 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mimoreir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/26 09:30:40 by mimoreir          #+#    #+#             */
-/*   Updated: 2022/07/26 09:30:42 by mimoreir         ###   ########.fr       */
+/*   Created: 2022/07/27 09:55:37 by mimoreir          #+#    #+#             */
+/*   Updated: 2022/07/27 09:55:39 by mimoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
-#include <unistd.h>
+#include <math.h>
+
+int	ft_strlen(char *str)
+{
+	int	x;
+
+	x = 0;
+	while (*str++ != '\0')
+	{
+		x++;
+	}
+	return (x);
+}
 
 int	ft_strcmp(char *s1, char *s2)
 {
@@ -43,39 +55,51 @@ int	valid_base(char *base)
 		return (0);
 }
 
-void	ft_putnbr(int nbr, int b, char *base)
+int	ft_convtonbr(char *str, char *base, int b)
 {
-	int	x;
+	int	nbr;
+	int	aux;
+	int	i;
 
-	x = 0;
-	if (nbr > 0)
+	aux = 0;
+	nbr = 0;
+	i = ft_strlen(str) -1;
+	while (*str)
 	{
-		x = nbr % b;
-		nbr = nbr / b;
-		ft_putnbr(nbr, b, base);
-		write(1, &base[x], 1);
+		if (*str >= '0' && *str <= '9')
+		{
+			aux = *str - '0';
+			nbr = nbr + (base[aux] - '0') * pow (b, i);
+		}
+		else if (*str >= 'A' && *str <= 'F')
+		{
+			aux = *str - 'A' + 10;
+			nbr = nbr + (base[aux] - 'A' + 10) * pow (b, i);
+		}
+		i--;
+		str++;
 	}
+	return (nbr);
 }
 
-void	ft_putnbr_base(int nbr, char *base)
+int	ft_atoi_base(char *str, char *base)
 {
 	int	b;
 
-	b = 0;
-	if (valid_base(base))
+	b = valid_base(base);
+	if (b != 0)
 	{
-		b = valid_base(base);
-		if (nbr < 0)
-		{
-			nbr = nbr * (-1);
-			write(1, "-", 1);
-		}
-		ft_putnbr(nbr, b, base);
+		return (ft_convtonbr(str, base, b));
 	}
+	else
+		return (0);
 }
 
-/*int	main(void)
+/*int	main(int argc, char *argv[])
 {
-	ft_putnbr_base(15,"poneyvif");
+	if (argc == 3)
+	{
+		printf("%d\n", ft_atoi_base(argv[1], argv[2]));
+	}
 	return (0);
 }*/

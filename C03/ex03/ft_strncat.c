@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
+#include <string.h>
 
 int	ft_strlen(char *str)
 {
@@ -43,11 +44,12 @@ char	*ft_strncat(char *dest, char *src, unsigned int nb)
 	return (dest);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	char a[15] = "Hello";
-	char b[6] = "World";
+	char b[21] = "Worldasdasdasdasdasd";
 
-	ft_strncat(a,b,3);
+	strncat(a,b,21);
+	//ft_strncat(a,b,21);
 	printf("%s\n", a);
-}
+}*/
