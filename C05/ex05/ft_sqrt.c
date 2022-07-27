@@ -10,33 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
-#include <math.h>
+
 int	ft_sqrt(int nb)
 {
-	int result;
 	int i;
 
-	i = 0;
-	result = 0;
+	i = 1;
 	if (nb < 1)
 		return(0);
 	if (nb == 1)
 		return (nb);
 	else
 	{
-		while (result <= nb)
+		while (i <= nb / 2)
 		{
-			i++;
-			result = i * i;
+			if((i * i) == nb)
+				return (i);
+			else
+				i++;
 		}
-		return (i -1);
 	}
 	return (0);
 }
 
 int main(void)
 {
-	printf("%f\n", sqrt(144));
-	printf("%d\n", ft_sqrt(144));
+	printf("%d\n", ft_sqrt(154));
 	return (0);
 }
