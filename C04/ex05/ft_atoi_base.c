@@ -10,76 +10,92 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
-#include <math.h>
 
-int	ft_strlen(char *str)
+int	ft_iterative_power(int nb, int power)
 {
-	int	x;
+	int	count;
 
-	x = 0;
-	while (*str++ != '\0')
+	count = 1;
+	if (power < 0)
+		return (0);
+	else if (power == 0)
+		return (1);
+	while (power)
 	{
-		x++;
+		count = count * nb;
+		power --;
 	}
-	return (x);
+	return (count);
 }
 
-int	ft_strcmp(char *s1, char *s2)
+int	repeat_alpha(char *base)
 {
-	while (*s1 && *s2)
+	char	*a;
+
+	while (*base)
 	{
-		if (*s1 == *s2)
-			;
-		else
-			return (0);
-		s1++;
-		s2++;
+		a = base + 1;
+		while (*a)
+		{
+			if (*a == *base)
+				return (0);
+			a++;
+		}
+		base++;
 	}
-	if (*s1 == '\0' && *s2 == '\0')
-		return (1);
-	else
-		return (0);
+	return (1);
 }
 
 int	valid_base(char *base)
 {
-	if (ft_strcmp(base, "0123456789"))
-		return (10);
-	else if (ft_strcmp(base, "01"))
-		return (2);
-	else if (ft_strcmp(base, "0123456789ABCDEF"))
-		return (16);
-	else if (ft_strcmp(base, "poneyvif"))
-		return (8);
-	else
+	char	*a;
+	int		i;
+
+	i = 0;
+	a = base;
+	while (*a)
+	{
+		i++;
+		a++;
+	}
+	if (i < 2)
 		return (0);
+	a = base;
+	while (*a)
+	{
+		if (*a == '+' || *a == '-')
+			return (0);
+		a++;
+	}
+	if (repeat_alpha(base))
+		return (i);
+	return (0);
 }
 
-int	ft_convtonbr(char *str, char *base, int b)
+int	ft_convtonbr(char *str, int b)
 {
-	int	nbr;
-	int	aux;
-	int	i;
+	int		res;
+	int		i;
+	char	*a;
+	int		aux;
 
+	res = 0;
+	i = 0;
+	a = str;
 	aux = 0;
-	nbr = 0;
-	i = ft_strlen(str) -1;
+	while (*a)
+	{
+		i++;
+		a++;
+	}
 	while (*str)
 	{
-		if (*str >= '0' && *str <= '9')
-		{
-			aux = *str - '0';
-			nbr = nbr + (base[aux] - '0') * pow (b, i);
-		}
-		else if (*str >= 'A' && *str <= 'F')
-		{
-			aux = *str - 'A' + 10;
-			nbr = nbr + (base[aux] - 'A' + 10) * pow (b, i);
-		}
+		aux = *str % b;
+		res = res + aux * ft_iterative_power(b, i - 1);
 		i--;
 		str++;
 	}
-	return (nbr);
+	return (res);
 }
 
 int	ft_atoi_base(char *str, char *base)
@@ -89,7 +105,7 @@ int	ft_atoi_base(char *str, char *base)
 	b = valid_base(base);
 	if (b != 0)
 	{
-		return (ft_convtonbr(str, base, b));
+		return (ft_convtonbr(str, b));
 	}
 	else
 		return (0);

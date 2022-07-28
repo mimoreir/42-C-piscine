@@ -14,7 +14,7 @@
 
 char	*spaces(char *str)
 {
-	while (*str && isspace(*str))
+	while ((*str >= 9 && *str <= 13) || (*str == 32))
 	{
 		str++;
 	}
@@ -52,9 +52,11 @@ int	ft_atoi(char *str)
 
 /*int	main(int argc, char *argv[])
 {
+	int x;
 	if (argc == 2)
 	{
-		printf("%d\n", ft_atoi(argv[1]));
+		x=ft_atoi(argv[1]);
+		printf("%d\n", x);
 	}
 	return (0);
 }*/

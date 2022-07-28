@@ -12,35 +12,52 @@
 #include <stdio.h>
 #include <unistd.h>
 
-int	ft_strcmp(char *s1, char *s2)
+int	ft_strlen(char *str)
 {
-	while (*s1 && *s2)
+	int	x;
+
+	x = 0;
+	while (*str++ != '\0')
 	{
-		if (*s1 == *s2)
-			;
-		else
-			return (0);
-		s1++;
-		s2++;
+		x++;
 	}
-	if (*s1 == '\0' && *s2 == '\0')
-		return (1);
-	else
-		return (0);
+	return (x);
+}
+
+int	repeat_alpha(char *base)
+{
+	char	*a;
+
+	while (*base)
+	{
+		a = base + 1;
+		while (*a)
+		{
+			if (*a == *base)
+				return (0);
+			a++;
+		}
+		base++;
+	}
+	return (1);
 }
 
 int	valid_base(char *base)
 {
-	if (ft_strcmp(base, "0123456789"))
-		return (10);
-	else if (ft_strcmp(base, "01"))
-		return (2);
-	else if (ft_strcmp(base, "0123456789ABCDEF"))
-		return (16);
-	else if (ft_strcmp(base, "poneyvif"))
-		return (8);
-	else
+	char	*a;
+
+	a = base;
+	if (ft_strlen(base) < 2)
 		return (0);
+	while (*a)
+	{
+		if (*a == '+' || *a == '-')
+			return (0);
+		a++;
+	}
+	if (repeat_alpha(base))
+		return (ft_strlen(base));
+	return (0);
 }
 
 void	ft_putnbr(int nbr, int b, char *base)
@@ -61,10 +78,9 @@ void	ft_putnbr_base(int nbr, char *base)
 {
 	int	b;
 
-	b = 0;
-	if (valid_base(base))
+	b = valid_base(base);
+	if (b)
 	{
-		b = valid_base(base);
 		if (nbr < 0)
 		{
 			nbr = nbr * (-1);
@@ -76,6 +92,6 @@ void	ft_putnbr_base(int nbr, char *base)
 
 /*int	main(void)
 {
-	ft_putnbr_base(15,"poneyvif");
+	ft_putnbr_base(123,"0123456789ABCDEF");
 	return (0);
 }*/
