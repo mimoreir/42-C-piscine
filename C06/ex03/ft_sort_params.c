@@ -51,10 +51,10 @@ void	ft_sort_params(int argc, char **argv)
 	while (i < argc)
 	{
 		j = i + 1;
-		while(j < argc)
+		while (j < argc)
 		{
-			if(j >= argc)
-				break;
+			if (j >= argc)
+				break ;
 			if (ft_strcmp(argv[i], argv[j]) > 0)
 			{
 				temp = argv[i];
@@ -72,7 +72,7 @@ int	main(int argc, char **argv)
 	int	i;
 
 	i = 1;
-	if(argc > 1)
+	if (argc > 1)
 	{
 		ft_sort_params(argc, argv);
 		while (i < argc)
@@ -83,5 +83,3 @@ int	main(int argc, char **argv)
 	}
 	return (0);
 }
-
-

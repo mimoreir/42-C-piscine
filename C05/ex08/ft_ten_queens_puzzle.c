@@ -1,33 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   ft_ten_queens_puzzle.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mimoreir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/22 14:43:02 by mimoreir          #+#    #+#             */
-/*   Updated: 2022/07/22 14:43:05 by mimoreir         ###   ########.fr       */
+/*   Created: 2022/07/28 10:12:41 by mimoreir          #+#    #+#             */
+/*   Updated: 2022/07/28 10:12:43 by mimoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
 
-void	ft_putchar(char c)
+int	ft_ten_queens_puzzle(void)
 {
-	write(1, &c, 1);
-}
-
-void	ft_putstr(char *str)
-{
-	while (*str)
-	{
-		ft_putchar(*str);
-		str++;
-	}
-}
-
-int	main(int argc, char **argv)
-{
-	(void) argc;
-	ft_putstr(argv[0]);
 	return (0);
 }

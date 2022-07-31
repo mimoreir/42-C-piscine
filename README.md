@@ -9,6 +9,6 @@ C01 70%
 C02 85%  
 C03 100%  
 C04 85%  
-C05 w8 eval  
+C05 80%  
 C06 w8 eval  
 C07 in progress  

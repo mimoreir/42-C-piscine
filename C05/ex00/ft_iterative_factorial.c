@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mimoreir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/22 14:43:02 by mimoreir          #+#    #+#             */
-/*   Updated: 2022/07/22 14:43:05 by mimoreir         ###   ########.fr       */
+/*   Created: 2022/07/31 12:46:58 by mimoreir          #+#    #+#             */
+/*   Updated: 2022/07/31 12:47:00 by mimoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
+#include <stdio.h>
 
-void	ft_putstr(char *str)
+int	ft_iterative_factorial(int nb)
 {
-	while (*str)
+	int	fac;
+
+	fac = 1;
+	if (nb < 0)
+		return (0);
+	if (nb < 2)
+		return (1);
+	while (nb)
 	{
-		ft_putchar(*str);
-		str++;
+		fac = fac * nb;
+		nb--;
 	}
+	return (fac);
 }
 
-int	main(int argc, char **argv)
+/*int main(void)
 {
-	(void) argc;
-	ft_putstr(argv[0]);
+	printf("%d\n", ft_iterative_factorial(10));
 	return (0);
-}
+}*/
