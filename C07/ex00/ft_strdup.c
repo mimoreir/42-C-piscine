@@ -32,6 +32,8 @@ char	*ft_strdup(char *src)
 
 	size = ft_strlen(src);
 	c = malloc(size + 1);
+	if (!c)
+		return (NULL);
 	a = c;
 	while (*src)
 	{
@@ -48,7 +50,8 @@ char	*ft_strdup(char *src)
 	char *c;
 
 	c = NULL;
-	c = ft_strdup("vamos ver se esta merda funciona\n");
+	c = ft_strdup("vamos ver");
 	printf("%s\n", c);
+	free(c);
 	return (0);
 }*/
