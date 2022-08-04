@@ -1,0 +1,10 @@
+git status 
+
+git add [FILENAME] to add a file to the repository
+
+git commit -m "first commit"
+
+git log to see what happend on repository
+
+tr [set1] [set2]
+tr ' ' ',' ------- replace spaces for commas

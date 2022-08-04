@@ -1,0 +1,64 @@
+File Interactions
+
+chmod > change rights to files
+
+echo > has Terminal showing what is typed
+
+man > manual
+
+ls > list all documents and folders in current location
+
+ls -l > ful description of files and folders in current location
+
+man ls > list of all commands for "ls"
+
+cat -e [FILENAME]	> shows all characters "paragraphs, etc...." used
+"$" > signals a hard return when placed after the text, if before it is meant to show the content of a variable, if a variable is in use, ex: echo miguel = miguel shows up in terminal, if echo $miguel=it shows whatever is in that variable
+
+touch > creates a file
+
+chmod > allows for permission modding, User-Group-Other, 421=r(ead), w(rite), e(x)ecute
+Permission change, to use numbers we set a ___, a sum of the numbers for each user/group
+eg: read and write for me, read for group and read for others
+	chmod 644 [FILE_NAME]
+
+touch -t "DOC_NAME"> modify file information regarding date and time
+
+tar -cf [FOLDER_NAME] [FILE_TO_BE_ZIPPED]
+
+wc -l returns de number of lines of a file
+
+if I use cat on a big file will not show the entire file
+to show the entire file use -> more [File Name]
+to search while acessing a file use /[word] and repeat to find one ahead of the first one.
+
+head -n X show X lines of a file
+	-c X for characters
+tail -n X show X lines of a file starting from the end
+	-c X for characters (in this case we have to count with the character of the hard return)
+
+grep [WORD][FILENAME]
+grep to find the lines with the search parameter
+grep -v to find the lines without the search parameter
+grep -i to make the search not case sensitive
+
+> write in the file and deletes is previous content
+>> adds to the file
+
+cat << [WORD]
+let you write to a file on terminal until you write de [WORD]
+to do and put the words to a file you use:
+cat << [WORD] > [FILENAME]
+
+ls bonjour *txt > test.txt 2>&1
+find file bonjour and all txt files and errors or good results are puted on test.txt
+
+find .
+find . -name [FILENAME]
+find . -type d/f
+find . -maxdepth [NUMBER]----> 0 only sees itself
+
+bc starts the linux calculator
+
+cat -e [file name] shows all the hard returns on the file
+
