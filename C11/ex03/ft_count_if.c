@@ -1,53 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*   ft_count_if.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mimoreir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/19 12:32:44 by mimoreir          #+#    #+#             */
-/*   Updated: 2022/07/19 12:32:47 by mimoreir         ###   ########.fr       */
+/*   Created: 2022/08/02 15:30:13 by mimoreir          #+#    #+#             */
+/*   Updated: 2022/08/02 15:30:14 by mimoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
 
-void	ft_swap(int *a, int *b)
+int	ft_count_if(char **tab, int length, int (*f) (char*))
 {
-	int	aux;
-
-	aux = *a;
-	*a = *b;
-	*b = aux;
-}
-
-void	ft_rev_int_tab(int *tab, int size)
-{
-	int	*a;
-	int	*b;
 	int	i;
+	int	count;
 
-	a = tab + (size - 1);
 	i = 0;
-	size = size / 2;
-	b = tab;
-	while (i < size)
+	count = 0;
+	while (tab[i])
 	{
-		ft_swap(b, a);
-		b++;
-		a--;
+		if (f(tab[i]))
+			count++;
 		i++;
 	}
+	return (count);
 }
-
-/*int	main(void)
-{
-	int tab[10] = {0,1,3,4,5,6,7,8,9,10};
-	ft_rev_int_tab(tab,10);
-	int i = 0;
-	while (i < 10)
-	{
-		printf("%d ", tab[i]);
-		i++;
-	}
-	return (0);
-}*/

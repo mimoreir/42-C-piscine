@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
+
 void	ft_swap(int *a, int*b)
 {
 	int	aux;
@@ -23,23 +24,33 @@ void	ft_sort_int_tab(int *tab, int size)
 {
 	int	*a;
 	int	*b;
-	int	con;
-	int	con2;
+	int	i;
 
-	con = 0;
+	i = 0;
 	a = tab;
-	while (con <= size)
+	while (i <= size)
 	{
-		con2 = con + 1;
 		b = a;
-		while (con2 <= size)
+		while (b <= tab + (size - 1))
 		{
-			if (*b < *a)
+			if (*a > *b)
 				ft_swap(a, b);
 			b++;
-			con2++;
 		}
-		con++;
+		i++;
 		a++;
 	}
 }
+
+/*int	main(void)
+{
+	int tab[20] = {1,91,3,4,5,6,7,0,-9,155,781,1998,19554,17,18,15,12,514,41,52};
+	ft_sort_int_tab(tab,20);
+	int i = 0;
+	while (i < 20)
+	{
+		printf("%d ", tab[i]);
+		i++;
+	}
+	return (0);
+}*/
